@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot name="cellphone">
+
+  <material name="grey">
+    <color rgba="0.8 0.8 0.8 1" />
+  </material>
+
+  <link name="base_link" /> 
+  <link name="cellphone_yaw" />
+  <link name="cellphone_roll" />
+  <link name="cellphone_pitch" />
+
+  
+  <joint name="cellphone_yaw" type="continuous">
+    <axis xyz="0 0 1" />
+    <parent link="base_link" />
+    <child link="cellphone_yaw" />
+  </joint>
+
+  <joint name="cellphone_pitch" type="continuous">
+    <axis xyz="0 1 0" />
+    <parent link="cellphone_yaw" />
+    <child link="cellphone_pitch" />
+  </joint>
+
+  <joint name="cellphone_roll" type="continuous">
+    <axis xyz="1 0 0" />
+    <parent link="cellphone_pitch" />
+    <child link="cellphone_roll" />
+  </joint>
+
+ <joint name="cellphone_fixed1" type="fixed">
+    <parent link="cellphone_roll" />
+    <child link="cellphone" />
+  </joint>
+
+  <link name="cellphone">
+    <visual>
+      <geometry>
+        <box size="1.5 0.75 0.2"/>
+      </geometry>
+    <material name="grey" />
+    </visual>
+  </link>
+</robot>
